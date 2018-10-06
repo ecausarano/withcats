@@ -13,7 +13,7 @@ object PrintableInstances {
 
 object Printable {
 
-  def format[A](a: A, printable: Printable[A]): String = printable.format(a)
+  def format[A](a: A)(implicit printable: Printable[A]): String = printable.format(a)
 
-  def print[A](a: A, printable: Printable[A]): Unit = println(printable.format(a))
+  def print[A](a: A)(implicit printable: Printable[A]): Unit = println(printable.format(a))
 }
