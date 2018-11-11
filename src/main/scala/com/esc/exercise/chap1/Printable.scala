@@ -1,4 +1,4 @@
-package com.esc.exercise
+package com.esc.exercise.chap1
 
 trait Printable[A] {
   def format(a: A): String

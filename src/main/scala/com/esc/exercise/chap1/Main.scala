@@ -1,4 +1,4 @@
-package com.esc.exercise
+package com.esc.exercise.chap1
 
 import Printable._
 import PrintableSyntax._
