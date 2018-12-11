@@ -1,22 +1,9 @@
 package com.esc.exercise.chap2
 
-trait Semigroup[A] {
-  def combine(x: A, y: A): A
-}
-
-trait Monoid[A] extends Semigroup[A] {
-  def empty: A
-}
-
-object Monoid {
-  def apply[A](implicit monoid: Monoid[A]): Monoid[A] = monoid
-}
-
 object BooleanMonoids extends App {
 
   implicit val And: Monoid[Boolean] = new Monoid[Boolean] {
     override def empty: Boolean = true
-
     override def combine(x: Boolean, y: Boolean): Boolean = x && y
   }
 
@@ -40,5 +27,7 @@ object BooleanMonoids extends App {
   println(Or.combine(false, Or.empty))
   println(Xor.combine(false, Xor.empty))
 
-
+  // nice possibility: pass the combinator as arg
+  def funzione(x: Boolean, y: Boolean, come: Monoid[Boolean]) = come.combine(x, y)
+  println(funzione(x = true, y = false, And))
 }
